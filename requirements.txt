@@ -1,0 +1,7 @@
+pycryptodome
+python-telegram-bot
+opencv-python
+pillow
+requests
+pywin32
+pyautogui
