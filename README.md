@@ -27,3 +27,5 @@ This project is provided for educational and experimental purposes only. The use
 The author of this project takes no responsibility for any damages or consequences arising from the use of this code. Any use of this code in violation of local laws, platform policies, or ethical principles is forbidden.
 
 If you intend to use this code, please ensure you comply with all applicable laws in your country and the terms of service of any platform on which you deploy this project. This code should never be used for malicious or illegal purposes.
+
+![Capture d'écran 2024-12-30 014410](https://github.com/user-attachments/assets/c5279547-8333-48ed-b195-392ae969abf0)
