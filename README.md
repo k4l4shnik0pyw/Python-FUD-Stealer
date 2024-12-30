@@ -13,6 +13,7 @@
 - Victim's serial numbers (bios, disks, motherboard)
 
 **📁 Files :**
+- The stealer add a copy of himslef in the startup folder
 - Victim's desktop files
 - Victim's sessions (epic games, telegram, riot games, and steam)
 
