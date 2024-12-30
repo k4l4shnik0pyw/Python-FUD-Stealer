@@ -20,6 +20,7 @@
 - Victim's webcam screenshot
 - Victim's screen (screenshot)
 
+**When the infos recovery finished, a fake error appears on the victim's screen**
 
 ### ⚠️ Disclaimer
 This project is provided for educational and experimental purposes only. The use of this code for malicious activities, including but not limited to stealing data, collecting private information without consent, or any other illegal activity, is strictly prohibited and may result in severe legal consequences.
@@ -29,3 +30,5 @@ The author of this project takes no responsibility for any damages or consequenc
 If you intend to use this code, please ensure you comply with all applicable laws in your country and the terms of service of any platform on which you deploy this project. This code should never be used for malicious or illegal purposes.
 
 ![Capture d'écran 2024-12-30 014410](https://github.com/user-attachments/assets/c5279547-8333-48ed-b195-392ae969abf0)
+
+![Capture d'écran 2024-12-30 023621](https://github.com/user-attachments/assets/53f15b17-23e2-4f4e-a12f-c12f447197b3)
