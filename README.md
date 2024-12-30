@@ -33,4 +33,3 @@ If you intend to use this code, please ensure you comply with all applicable law
 
 ![Capture d'écran 2024-12-30 023621](https://github.com/user-attachments/assets/53f15b17-23e2-4f4e-a12f-c12f447197b3)
 
-![Capture d'écran 2024-12-30 025542](https://github.com/user-attachments/assets/8ae4ce7f-25d4-44af-8e02-d36c91a3b838)
