@@ -1,6 +1,6 @@
 # 🐍 Python FUD Telegram stealer
 
-**All the information stolen by the program will be sent to you via email, along with additional information about the file and its status.**
+**All the information stolen by the program will be sent to you via Telegram, along with additional information about the file and its status.**
 
 ### With this stealer you get :
 
